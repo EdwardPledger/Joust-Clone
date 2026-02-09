@@ -10,8 +10,6 @@ namespace Spawners
     {
         [SerializeField]
         public GameObject egg;
-        [SerializeField]
-        public EggLogic eggLogic;
 
         private List<GameObject> eggs = new();
 
@@ -23,6 +21,7 @@ namespace Spawners
             var eggInstance = Instantiate(egg, new Vector3(position.x, position.y - 0.5f, 0), new Quaternion());
             eggs.Add(eggInstance);
             var eggRigidBody = eggInstance.GetComponent<Rigidbody2D>();
+            var eggLogic = eggInstance.GetComponent<EggLogic>();
 
             // If the enemy was on the right side
             if (pushLeft)

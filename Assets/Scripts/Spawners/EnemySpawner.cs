@@ -33,9 +33,9 @@ namespace Spawners
             }
         }
 
-        public void SpawnEnemyAtPosition(string prefabName, Vector3 position)
+        public void SpawnEnemyAtPosition(Vector3 position)
         {
-            var enemy = Resources.Load<GameObject>($"Prefabs/{prefabName}");
+            var enemy = Resources.Load<GameObject>("Prefabs/Enemy3");  // Hard coded ref for now
             Instantiate(enemy, position, Quaternion.identity);
         }
     }

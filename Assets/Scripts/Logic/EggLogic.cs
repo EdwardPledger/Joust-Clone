@@ -25,8 +25,6 @@ public class EggLogic : MonoBehaviour
             uiManager.UpdateScore(100);  // TODO: Make the score amount a constant
             eggSmashed = true;
 
-            enemySpawner.SpawnEnemyAtPosition(prefabName, transform.position);
-
             Destroy(gameObject);
         }
     }
@@ -38,14 +36,12 @@ public class EggLogic : MonoBehaviour
     {
         this.prefabName = prefabName;
 
-        while (!eggSmashed)
-        {
-            yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(5);
 
-            if (!eggSmashed)
-            {
-                Destroy(gameObject);
-            }
+        if (!eggSmashed)
+        {
+            Destroy(gameObject);
+            enemySpawner.SpawnEnemyAtPosition(transform.position);
         }
     }
 }
